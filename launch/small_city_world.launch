@@ -1,0 +1,19 @@
+<launch>
+
+    <!-- Reminder: Ensure you've sourced /usr/share/gazebo/setup.sh and your ROS workspace before launching -->
+
+    <!-- Set GAZEBO_MODEL_PATH environment variable -->
+    <env name="GAZEBO_MODEL_PATH" value="$(find my_robot_worlds)/models:${GAZEBO_MODEL_PATH}"/>
+
+    <!-- Load the small_city environment into Gazebo -->
+    <arg name="world_name" default="$(find my_robot_worlds)/worlds/small_city.world"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+</launch>
